@@ -2,6 +2,12 @@
 Basic Logic for (Mic) -> (LED) hypersax
 More sound = more angry light
 ****************************************/
+
+/*To-do: 
+1. read https://forum.arduino.cc/index.php?topic=421081 and send using RF
+2. Switch, or gradient, or both? Revisit after soldering
+3. Temperature sensor? In setup (ie on reset), take initial reading, then use as comparison during performance
+*/
 #include <Adafruit_NeoPixel.h>
 #define PIN            5
 #define NUMPIXELS      1
@@ -47,9 +53,19 @@ void loop()
    double volts = (peakToPeak * 5.0) / 1024;  // convert to volts
    Serial.println(peakToPeak);
 
-   int red = peakToPeak / 3;
-   int blue = 150 - (peakToPeak / 3);
+   if (0 <= peakToPeak <= 250)
+   {
+     pixels.setPixelColor(0, pixels.Color(50, 0, 150));
+     //Send trigger
+   }
+   else if (peakToPeak <= 500)
+   {
+     pixels.setPixelColor(0, pixels.Color(150, 50, 50));
+   }
+   else
+   {
+     pixels.setPixelColor(0, pixels.Color(50, 150, 50));
+   }
    
-   pixels.setPixelColor(0, pixels.Color(0, red, blue));
    pixels.show();
 }
