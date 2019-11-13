@@ -1,9 +1,9 @@
 # hypersax
-Ongoing project to augment live saxophone performances using sensors
+Ongoing project to augment live saxophone performances using sensors.
+
+Currently, an arduino nano on the saxophone can sense volume levels (Max4466 microphone) and sends it via RF components (NRF24l01) to an UNO on a laptop. The mic levels are visualized in Processing.
 
 # brainstorming
-## Elegoo NANO
-- Use Nano - (not old bootloader) port 5 is working but port 4 gives troubles
 
 ## inputs
 - volume of instrument (contact mic)
@@ -14,6 +14,6 @@ Ongoing project to augment live saxophone performances using sensors
 
 ## outputs
 - LEDs: lights inside sax; wearable pendant; tangled strip; lights in clothes; LED cube/cubetype thing
-- projection: max
+- projection: max or processing
 - house lights: max
 - event triggers
